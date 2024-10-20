@@ -1,0 +1,25 @@
+import random as rd
+
+
+
+lastnum = 100
+Playersnumer = float(input("your number: "))
+while Playersnumer > lastnum:
+    Playersnumer = float(input("your numer: "))
+
+
+Randomnumber= None
+
+
+score = 0
+
+def Random(Num):
+    Num = rd.randint(1,lastnum)
+    return Num
+
+while Playersnumer != Randomnumber:
+    Randomnumber = Random(Randomnumber)
+    score += 1
+    print(Randomnumber)
+
+print(f"Congratulations on winning this game in {score}!!!")
