@@ -1,0 +1,35 @@
+import random
+
+
+money = 10000
+
+def game(bet,chose):
+    result = random.choice(["H","T"])
+    if chose == result:
+        bet = bet*1.5
+        print("Win!")
+    else:
+        bet= bet*0.5
+        print("You lose :<")
+    return bet
+while money>0:
+    chose = str(input("Head or Tail? (H or T): "))
+    
+    bet= float(input("Bet amount: "))
+    
+    while bet > money:
+        bet= float(input("Bet amount: "))
+    money = money- bet
+    bet = game(bet,chose)
+    money = money+ bet
+    print(f"You have ${money}")
+
+    
+    
+        
+        
+
+
+
+
+print("you go bust")
