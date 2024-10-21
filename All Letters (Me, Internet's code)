@@ -1,0 +1,19 @@
+# Initialize an empty list to hold Unicode characters
+Q = []
+
+# Open a file to write Unicode characters
+with open('All.txt', 'w', encoding='utf-8') as file:
+    # Iterate through the valid Unicode range (0 to 1114111)
+    for i in range(1114112):  # 0 to 1114111 (inclusive)
+        # Check if the character is a surrogate
+        if 0xD800 <= i <= 0xDFFF:
+            continue  # Skip surrogate characters
+        try:
+            # Append the Unicode character to the list
+            Q.append(chr(i))
+        except ValueError:
+            # Skip invalid Unicode characters (if any)
+            continue
+    
+    # Join the list into a string and write it to the file
+    file.write(''.join(Q))  # Write the characters as a single string
