@@ -1,0 +1,93 @@
+import random
+print("Where is it?")
+
+def stage1():
+    print("What is the password?")
+    
+    Answer = input("Enter Password: ")
+    while Answer != "PassWord":
+        Answer = input("Enter Password: ")
+        
+    Answer = input("Password is Incorrect: ")
+    while Answer != "Incorrect":
+        Answer = input("Password is Incorrect: ")
+
+    Answer = input("Try Later: ")
+    while Answer != "Later":
+        Answer = input("Try Later: ")
+
+    print("Stage 1 Clear!!!")
+
+def findnumber():
+    score = 0
+    many = 100  
+    Number = random.randint(1, many)
+    
+    print("Let's start the number guessing game!")
+    player = int(input("Please enter your guessed number: "))
+    
+    while player != Number:
+        if player > Number:
+            print("The number is smaller.")
+        else:
+            print("The number is larger.")
+        player = int(input("Please enter your guessed number: "))
+        score += 1
+    
+    print(f"Correct!! You guessed it in {score + 1} tries.")
+    return score + 1  
+
+def stage2():
+    print("Hmm, it seems like a up-down game where you have to guess a number between 1 and 100.")
+    print("You probably need to guess it within 7 tries.")
+    
+    Qr = findnumber()
+    
+    if Qr > 7:
+        print(f"But you tried {Qr} times. Looks like you'll have to do it again.")
+        stage2()  
+    else:
+        print("Stage 2 Clear!!")
+
+def stage3():
+    print("In this stage, you'll pick a number between 1 and 1000,\
+          and the computer will randomly pick a number between 1 and 1000.\
+          We'll keep going until your choice matches the computer's choice,\
+          and the number of tries must be less than 479.")
+    
+    score = stage3w()
+    while score > 479:
+        print(f"Unfortunately, it took {score} tries.")
+        score = stage3w()
+    
+    print(f"You won in only {score} tries!!!\
+    Stage 3 Clear!!!!")
+
+def stage3w(): 
+    lastnum = 1000
+    PlayerNumber = float(input("Your number: "))
+    
+    while PlayerNumber > lastnum:
+        PlayerNumber = float(input("Your number: "))
+
+    RandomNumber = None
+    score = 0
+
+    def Random(Num):
+        return random.randint(1, lastnum)
+
+    while PlayerNumber != RandomNumber:
+        RandomNumber = Random(RandomNumber)
+        print(RandomNumber)
+        score += 1
+    
+    print(RandomNumber)
+    print(f"Congratulations on winning this game in {score + 1}!!!")
+    return score + 1
+
+# Execute stages
+if __name__ == "__main__":
+    stage1()
+    stage2()
+    stage3()
+print("Game Clear!!!")
