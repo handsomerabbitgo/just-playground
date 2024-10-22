@@ -1,0 +1,26 @@
+import random
+
+feel = ["Cute ", "Happy ", "Sad ", "Quiet ", "Angry ", "Dumb ", "Delicious "]
+M = ["dragon", "pizza", "dog", "umbrella", "cat", "bird"]
+start = ["I ", "You ", "We ", "They ", "It ", "He ", "She "]
+Ing = ["eat ", "see ", "look ", "put "]
+Ings = ["eats ", "sees ", "looks "]
+Past = ["ate ", "saw ", "looked "]
+ily = [" easily", " quietly", " simply"]
+
+def Now():
+    Number = random.randint(0, 6)
+    string = ""
+    Num = random.randint(0, 10)
+
+    if Num == 1:
+        string = start[Number] + Ings[random.randint(0, len(Ings)-1)] + feel[random.randint(0, len(feel)-1)] + M[random.randint(0, len(M)-1)] + ily[random.randint(0, len(ily)-1)]
+    else:
+        string = start[Number] + Ing[random.randint(0, len(Ings)-1)] + feel[random.randint(0, len(feel)-1)] + M[random.randint(0, len(M)-1)]
+    
+    return string
+
+def Pas():
+    string = start[random.randint(0, len(start)-1)] + Past[random.randint(0, len(Past)-1)] + feel[random.randint(0, len(feel)-1)] + M[random.randint(0, len(M)-1)]
+    return string
+
