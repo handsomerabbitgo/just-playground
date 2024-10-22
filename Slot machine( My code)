@@ -1,0 +1,77 @@
+import random
+
+three = 0
+two = 0
+one = 0
+
+
+money = float(1000)
+po1= ["◆","♣️","$","*","✚ ","&","★","☂","☃","🍒"]
+
+po2 = po1
+po3= po1
+
+for i in range(10000):
+    random.shuffle(po1)
+    random.shuffle(po2)
+    random.shuffle(po3)
+    Q = random.randint(0,len(po1)-1)
+    W= random.randint(0,len(po1)-1)
+    E= random.randint(0,len(po1)-1)
+    p1 = po1[Q]
+    p2 = po2[W]
+    p3 = po3[E]
+    if p1 == p2 == p3:
+        three += 1 #1%
+    elif p1 == p2 or p2 == p3 or p1 == p3:
+        two +=1 #27.2%
+    else:
+        one +=1 #71.85%
+def slot(bet):
+    random.shuffle(po1)
+    random.shuffle(po2)
+    random.shuffle(po3)
+    Q = random.randint(0,len(po1)-1)
+    W= random.randint(0,len(po1)-1)
+    E= random.randint(0,len(po1)-1)
+    p1 = po1[Q]
+    p2 = po2[W]
+    p3 = po3[E]
+    print(f"{p1} | {p2} | {p3}")
+    
+    
+    if p1 == p2 == p3:
+        print("Jackpot!!")
+        
+        
+        return 3*bet
+        
+    elif p1 == p2 or p2 == p3 or p1 == p3:
+        print("Good job")
+        
+        return 1.5*bet
+    else:
+        print("Try again")
+        return bet*0.79
+
+
+
+while money>0:
+    print(f"Your money : {money}$ ")
+    bet = money+1
+    
+    while bet> money:
+        bet = float(input("How much are you willing to bet?: "))
+        if bet > money:
+            print("Your bet must be less than the total")
+    money = money- bet
+    bet = slot(bet)
+    money = bet + money
+print("You are bankrupt")
+
+
+
+
+
+
+
