@@ -1,0 +1,77 @@
+
+
+
+def PiboNaZi(NUM):
+    New = ["0", "1"]
+    if NUM == 1:
+        New = ["0"]
+    elif NUM == 2:
+        New = ["0", "1"]
+    else:
+        for i in range(NUM-2):
+            New.append((int(New[i]) + int(New[i+1])))
+    return New
+
+
+def PlusNum(Num, ratio, fisrtnum):
+    New = []
+    New.append((fisrtnum))
+
+    for i in range(Num):
+        New.append((int(New[i]) + ratio))
+    return New
+
+
+def multiplus(Num, ratio, firstnum):
+    New = []
+    New.append((firstnum))
+
+    for i in range(Num):
+        New.append((float(New[i]) * ratio))
+    return New
+
+
+def ihang(Num):
+    import math
+    New = ["1"]
+    for i in range(Num):
+        Q = math.comb(Num,i+1)
+        New.append((Q))
+    return New
+
+def prime_sequence(n):
+    New = []
+    candidate = 2
+    while len(New) < n:
+        is_prime = True
+        for p in New:
+            if candidate % p == 0:
+                is_prime = False
+                break
+        if is_prime:
+            New.append(candidate)
+        candidate += 1
+    return New
+
+def oddeven(OddEven,Num):
+    New = []
+    
+    if OddEven == "odd":
+        for i in range(Num):
+            New.append(2*(i)+1)
+    else:
+        for i in range(Num):
+            New.append(2*(i+1))
+    print(New)
+
+
+def factoryal(Num):
+    New = []
+    for p in range(1, Num + 1):  
+        pf = 1
+        for i in range(1, p + 1):
+            pf *= i
+        New.append(pf)
+    print(New)
+
+            
