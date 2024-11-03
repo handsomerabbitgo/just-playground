@@ -1,0 +1,32 @@
+import random
+fails = 0
+suc = 0
+trys = 0
+
+
+def seat():
+    global trys 
+    global fails
+    global suc
+    seatg = 100*[False]
+    for i in range(99):
+        if i == 0 or seatg[i]==True:
+            Grand = random.randint(0,99)
+            while seatg[Grand] == True:
+                Grand = random.randint(0,99)
+            seatg[Grand] = True
+        else:
+            seatg[i] = True
+    if seatg[99] == True:
+        trys += 1
+        fails += 1
+    else:
+        trys += 1
+        suc += 1
+for i in range(100000):
+    seat()
+    print(i)
+print(f'{suc/trys}')
+
+
+
